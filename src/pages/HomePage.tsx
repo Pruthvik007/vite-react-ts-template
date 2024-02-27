@@ -1,7 +1,12 @@
 const HomePage = () => {
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
-      <h1 className="text-green-500 underline">Hello World!</h1>
+    <div className="warning">
+      <h1>Hello World!</h1>
+      <h2>Hello World!</h2>
+      <h3>Hello World!</h3>
+      <h4>Hello World!</h4>
+      <h5>Hello World!</h5>
+      <h6>Hello World!</h6>
     </div>
   );
 };
