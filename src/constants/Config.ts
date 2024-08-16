@@ -1,1 +1,1 @@
-export const BASE_URL = "/sample";
+export const APP_BASE_URL = "/vite";

@@ -13,27 +13,3 @@
   background-color: #5b5b5b;
   border-radius: 10px;
 }
-
-.primary {
-  @apply bg-slate-600 dark:bg-slate-900;
-}
-
-.secondary {
-  @apply bg-neutral-700 dark:bg-neutral-900;
-}
-
-.success {
-  @apply bg-green-300 dark:bg-green-900;
-}
-
-.error {
-  @apply bg-rose-700 dark:bg-rose-900;
-}
-
-.warning {
-  @apply bg-yellow-700 dark:bg-yellow-900;
-}
-
-.info {
-  @apply bg-teal-700 dark:bg-teal-900;
-}

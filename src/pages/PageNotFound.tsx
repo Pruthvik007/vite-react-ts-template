@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../constants/Config";
+import { APP_BASE_URL } from "../constants/Config";
 
 const PageNotFound = () => {
   return (
@@ -10,7 +10,7 @@ const PageNotFound = () => {
           Sorry, The Page You're looking for Cannot Be Found.
         </p>
         <Link
-          to={BASE_URL}
+          to={APP_BASE_URL}
           className="bg-blue-500 hover:bg-blue-600 text-white hover:text-white py-2 px-4 rounded"
         >
           Go Home

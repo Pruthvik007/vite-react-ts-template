@@ -1,27 +1,15 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import BackDrop from "./components/common/BackDrop.tsx";
-import { BASE_URL } from "./constants/Config.ts";
-const PageNotFound = React.lazy(() => import("./pages/PageNotFound.tsx"));
-const HomePage = React.lazy(() => import("./pages/HomePage"));
-const routeObj: RouteObject[] = [
+import { APP_BASE_URL } from "./constants/Config.ts";
+import PageNotFound from "./pages/PageNotFound.tsx";
+import HomePage from "./pages/HomePage.tsx";
+import ProtectedRoute from "./ProtectedRoute.tsx";
+
+const publicRoutes: RouteObject[] = [
   {
-    path: BASE_URL,
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: (
-          <Suspense fallback={<BackDrop />}>
-            <HomePage />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-  {
-    path: "/notfound",
+    path: "/pagenotfound",
     element: (
       <Suspense fallback={<BackDrop />}>
         <PageNotFound />
@@ -37,6 +25,31 @@ const routeObj: RouteObject[] = [
     ),
   },
 ];
-const Router = createBrowserRouter(routeObj);
 
-export default Router;
+const allPrivateRoutes: RouteObject[] = [
+  {
+    path: APP_BASE_URL,
+    element: <ProtectedRoute role="*" />,
+    children: [
+      {
+        path: APP_BASE_URL,
+        element: <App />,
+        children: [
+          {
+            index: true,
+            element: (
+              <Suspense fallback={<BackDrop />}>
+                <HomePage />
+              </Suspense>
+            ),
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const router = createBrowserRouter([
+  ...publicRoutes,
+  ...allPrivateRoutes,
+]);
